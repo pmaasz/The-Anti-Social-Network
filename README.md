@@ -25,3 +25,4 @@ A list of features to come:
   <li>
     automatically triggers download of chrome.
   </li>
+</ul>
