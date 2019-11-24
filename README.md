@@ -2,7 +2,7 @@
 
 ## A falsely functioning social network
 
-This project aims to show badly implemented features. Most of the features schould be commonly used and wide spread features in the world of webapplications. To showcase those implementations, a social network context was chosen. Hence the name The Anti-Social Network. Some features will be implemented just to annoy the user, just for fun or by the given amount of stupidity.
+This project aims to show badly implemented features. Most of the features should be commonly used and wide spread features in the world of webapplications. To showcase those implementations, a social network context was chosen. Hence the name The Anti-Social Network. Some features will be implemented just to annoy the user, just for fun or due to the given amount of stupidity.
 
 A list of features to come:
 
@@ -25,3 +25,4 @@ A list of features to come:
   <li>
     automatically triggers download of chrome.
   </li>
+</ul>
