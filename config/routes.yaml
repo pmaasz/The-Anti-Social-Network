@@ -9,6 +9,19 @@ register:
 login:
     path: /login
     controller: App\Controller\SecurityController::loginAction
+
 password:
     path: /password
     controller: App\Controller\SecurityController::forgotPasswordAction
+    
+feed:
+    path: /feed
+    controller: App\Controller\FeedController::indexAction
+
+comment:
+    path: /comment
+    controller: App\Controller\CommentController::createAction
+
+entry:
+    path: /entry
+    controller: App\Controller\FeedController::createAction
