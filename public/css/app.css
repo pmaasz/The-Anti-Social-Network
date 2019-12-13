@@ -10,6 +10,12 @@ body {
     background-color: #595c5f !important;
 }
 
+.landingpageCard {
+    background-color: transparent !important;
+    border: none !important;
+    color: white !important;
+}
+
 .bg-blue {
     background-color: blue
 }

@@ -1,5 +1,5 @@
-feed:
-    path: /feed
+index:
+    path: /
     controller: App\Controller\OverviewController::indexAction
 
 register:
