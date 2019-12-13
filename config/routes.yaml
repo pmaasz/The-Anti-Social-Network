@@ -5,3 +5,11 @@ index:
 login:
     path: /login
     controller: App\Controller\SecurityController::loginAction
+
+register:
+    path: /register
+    controller: App\Controller\SecurityController::registerAction
+
+password:
+    path: /password
+    controller: App\Controller\SecurityController::forgotPasswordAction
