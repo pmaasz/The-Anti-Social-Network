@@ -51,7 +51,7 @@ class Comment
 
     /**
      * @var Dislike[]
-     * @ORM\OneToMany(targetEntity="Dislike")
+     * @ORM\OneToMany(targetEntity="Dislike", mappedBy="comment")
      */
     private $dislikes;
 
