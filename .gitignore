@@ -9,7 +9,9 @@
 /.idea/
 composer.lock
 ###< symfony/framework-bundle ###
-
+/.idea
+/composer.lock
+/symfony.lock
 ###> symfony/phpunit-bridge ###
 .phpunit
 .phpunit.result.cache
