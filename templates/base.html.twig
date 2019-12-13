@@ -1,15 +1,26 @@
     <html lang="en">
     <html>
     <head>
+        <meta charset="UTF-8">
+
         {{ include('./service/head.html.twig') }}
         <title>{% block title %}Anti-Social-Network{% endblock %}</title>
+        {{ include('./service/head.html.twig') }}
+        <title>{% block title %}Anti-Social-Network{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        {% endblock %}
     </head>
-    <body id="body">
-    {% block header %}{% endblock %}
-    {% block content %}{% endblock %}
+    <body>
+        {% block content %}{% endblock %}
 
-    {% block scripts %}
-    {{ include('./service/scripts.html.twig') }}
-    {% endblock %}
+        {% block flashMessages %}{% endblock %}
+
+        {% block javascripts %}
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+             {{ include('./service/scripts.html.twig') }}
+        {% endblock %}
     </body>
     </html>

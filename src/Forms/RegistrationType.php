@@ -36,25 +36,40 @@ class RegistrationType extends AbstractType
     public function buildForm (FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username', TextType::class, [
-                'attr' => array('style' => 'height: 25px'),
-                'required' => true
-            ])
-            ->add('email', EmailType::class, [
-                'attr' => array('style' => 'height: 25px'),
-                'required' => true
-            ])
-            ->add('firstName', TextType::class, [
-                'attr' => array('style' => 'height: 25px'),
-                'required' => true
+            ->add('firstName', TextType::class,[
+                'label' => false,
+                'required' => true,
+                'attr' => [
+                    'placeholder' => 'Vorname'
+                ]
             ])
             ->add('lastName', TextType::class, [
-                'attr' => array('style' => 'height: 25px'),
-                'required' => true
+                'label' => false,
+                'required' => true,
+                'attr' => [
+                    'placeholder' => 'Name'
+                ]
+            ])
+            ->add('username', TextType::class, [
+                'label' => false,
+                'required' => true,
+                'attr' => [
+                    'placeholder' => 'Username'
+                ]
+            ])
+            ->add('email', EmailType::class, [
+                'label' => false,
+                'required' => true,
+                'attr' => [
+                    'placeholder' => 'E-Mail Adresse'
+                ]
             ])
             ->add('plainPassword', PasswordType::class, [
-                'attr' => array('style' => 'height: 25px'),
-                'required' => true
+                'label' => false,
+                'required' => true,
+                'attr' => [
+                    'placeholder' => 'Passwort'
+                ]
             ]);
     }
 
@@ -63,6 +78,6 @@ class RegistrationType extends AbstractType
      */
     public function configureOptions (OptionsResolver $resolver)
     {
+        $resolver->setDefaults([]);
     }
-
 }

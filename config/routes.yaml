@@ -9,3 +9,6 @@ register:
 login:
     path: /login
     controller: App\Controller\SecurityController::loginAction
+password:
+    path: /password
+    controller: App\Controller\SecurityController::forgotPasswordAction
