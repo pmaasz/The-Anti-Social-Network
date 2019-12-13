@@ -2,18 +2,18 @@ index:
     path: /
     controller: App\Controller\OverviewController::indexAction
 
-login:
-    path: /login
-    controller: App\Controller\SecurityController::loginAction
-
 register:
     path: /register
     controller: App\Controller\SecurityController::registerAction
 
+login:
+    path: /login
+    controller: App\Controller\SecurityController::loginAction
+
 password:
     path: /password
     controller: App\Controller\SecurityController::forgotPasswordAction
-
+    
 feed:
     path: /feed
     controller: App\Controller\FeedController::indexAction
