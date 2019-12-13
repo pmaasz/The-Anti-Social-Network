@@ -18,6 +18,7 @@ class User implements UserInterface
     /**
      * @var string
      * @ORM\Id()
+     * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="string", length= 191)
      */
     private $uuid;
