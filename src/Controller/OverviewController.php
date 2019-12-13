@@ -11,8 +11,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  */
 class OverviewController extends AbstractController
 {
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction()
     {
-        $this->render('index.html.twig');
+        return $this->render('index.html.twig');
     }
 }
