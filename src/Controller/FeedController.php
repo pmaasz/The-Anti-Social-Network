@@ -20,7 +20,7 @@ class FeedController extends AbstractController
     {
         $entries = $this->getDoctrine()->getRepository(Entry::class)->findAll();
 
-        return $this->render('feed.html.twig', [
+        return $this->render('Feed/feed.html.twig', [
             'entries' => $entries
         ]);
     }
