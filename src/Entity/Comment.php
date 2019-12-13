@@ -5,14 +5,14 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Entry
+ * Class Comment
  *
  * @package App\Entity
  *
  * @ORM\Entity()
- * @ORM\Table(name="entry")
+ * @ORM\Table(name="comment")
  */
-class Entry
+class Comment
 {
     /**
      * @var string
@@ -30,16 +30,10 @@ class Entry
 
     /**
      * @var User
-     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="comments")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="uuid")
      */
     private $author;
-
-    /**
-     * @var string
-     * @ORM\Column(type="string", nullable=false)
-     */
-    private $body;
 
     /**
      * @var Media
@@ -49,19 +43,20 @@ class Entry
     private $media;
 
     /**
-     * @var Comment[]
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="entry")
+     * @var Entry
+     * @ORM\ManyToOne(targetEntity="Entry")
+     * @ORM\JoinColumn(name="entry_id", referencedColumnName="uuid")
      */
-    private $comments;
+    private $entry;
 
     /**
      * @var Dislike[]
-     * @ORM\OneToMany(targetEntity="Dislike", mappedBy="entry")
+     * @ORM\OneToMany(targetEntity="Dislike", mappedBy="comment")
      */
     private $dislikes;
 
     /**
-     * Entry constructor.
+     * Comment constructor.
      *
      * @throws \Exception
      */
@@ -119,22 +114,6 @@ class Entry
     }
 
     /**
-     * @return string
-     */
-    public function getBody(): string
-    {
-        return $this->body;
-    }
-
-    /**
-     * @param string $body
-     */
-    public function setBody(string $body): void
-    {
-        $this->body = $body;
-    }
-
-    /**
      * @return Media
      */
     public function getMedia(): Media
@@ -151,19 +130,19 @@ class Entry
     }
 
     /**
-     * @return Comment[]
+     * @return Entry
      */
-    public function getComments(): array
+    public function getEntry(): Entry
     {
-        return $this->comments;
+        return $this->entry;
     }
 
     /**
-     * @param Comment[] $comments
+     * @param Entry $entry
      */
-    public function setComments(array $comments): void
+    public function setEntry(Entry $entry): void
     {
-        $this->comments = $comments;
+        $this->entry = $entry;
     }
 
     /**
