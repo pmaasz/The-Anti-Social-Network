@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="container">
+        {% block flashMessages %}
+            {{ parent() }}
+        {% endblock %}
+
+        <div class="row" id="securityContent">
+            <div class="col-xs-12 col-md-12">
+                {% block securityform %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
