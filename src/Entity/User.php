@@ -2,42 +2,51 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Class User
  *
  * @package App\Entity
+ * @ORM\Table(name="user")
  */
 class User implements UserInterface
 {
     /**
      * @var string
+     * @ORM\Id()
+     * @ORM\Column(type="string", length= 191)
      */
     private $uuid;
 
     /**
      * @var string
+     * @ORM\Column(type="string")
      */
     private $username;
 
     /**
      * @var string
+     * @ORM\Column(type="string")
      */
     private $email;
 
     /**
      * @var string
+     * @ORM\Column(type="string")
      */
     private $firstName;
 
     /**
      * @var string
+     * @ORM\Column(type="string")
      */
     private $lastName;
 
     /**
      * @var string
+     * @ORM\Column(type="string")
      */
     private $plainPassword;
 
