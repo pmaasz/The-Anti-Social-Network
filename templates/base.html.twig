@@ -1,12 +1,15 @@
-<!DOCTYPE html>
-<html>
+    <html lang="en">
+    <html>
     <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {{ include('./service/head.html.twig') }}
+        <title>{% block title %}Anti-Social-Network{% endblock %}</title>
     </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    <body id="body">
+    {% block header %}{% endblock %}
+    {% block content %}{% endblock %}
+
+    {% block scripts %}
+    {{ include('./service/scripts.html.twig') }}
+    {% endblock %}
     </body>
-</html>
+    </html>
