@@ -1,3 +1,7 @@
 index:
     path: /
     controller: App\Controller\OverviewController::indexAction
+
+login:
+    path: /login
+    controller: App\Controller\SecurityController::loginAction
