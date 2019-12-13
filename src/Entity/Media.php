@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+/** @todo use Vich-Uploader-Bundle */
+
 /**
  * Class Media
  *
