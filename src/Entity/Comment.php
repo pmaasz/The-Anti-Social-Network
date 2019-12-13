@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Class Comment
  *
@@ -40,7 +42,7 @@ class Comment
 
     /**
      * @var Entry
-     * @ORM\OneToOne(targetEntity="Entity")
+     * @ORM\OneToOne(targetEntity="Entry")
      */
     private $entry;
 
