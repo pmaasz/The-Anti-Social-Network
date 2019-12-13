@@ -6,8 +6,8 @@
     color: white;
 }
 
-.bodyColor {
-    background-color: #595c5f;
+body {
+    background-color: #595c5f !important;
 }
 
 .bg-blue {
@@ -26,6 +26,7 @@
     height: calc(100vh - 50px);
 }
 
-.testColor {
-    background-color: red !important;
+.hw-100 {
+    height: calc(100% - 50px);
+    width: calc(100% - 50px);
 }

@@ -2,9 +2,6 @@
     <html>
     <head>
         <meta charset="UTF-8">
-
-        {{ include('./service/head.html.twig') }}
-        <title>{% block title %}Anti-Social-Network{% endblock %}</title>
         {{ include('./service/head.html.twig') }}
         <title>{% block title %}Anti-Social-Network{% endblock %}</title>
         {% block stylesheets %}
@@ -12,6 +9,7 @@
         {% endblock %}
     </head>
     <body>
+        {% block header %}{% endblock %}
         {% block content %}{% endblock %}
 
         {% block flashMessages %}{% endblock %}
