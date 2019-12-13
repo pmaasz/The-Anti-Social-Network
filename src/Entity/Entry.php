@@ -9,5 +9,15 @@ namespace App\Entity;
  */
 class Entry
 {
+    private $uuid;
 
+    private $createDate;
+
+    private $user;
+
+    private $body;
+
+    private $comments;
+
+    private $dislikes;
 }
