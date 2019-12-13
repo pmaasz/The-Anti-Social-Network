@@ -1,68 +1,74 @@
-{% extends 'base.html.twig' %}
+{% extends 'index.html.twig' %}
 
 {% block content %}
-    <div class="card" id="securityCard">
-        <div class="card-header text-center">
-            <h1>Registrieren</h1>
-        </div>
-        <div class="card-body" id="securityCardBody">
-            {{ form_start(form) }}
-            <div class="mb-3">
-                <div class="input-group">
-                    {{ form_widget(form.firstName) }}
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="userIcon"><i class="ra-user"></i></span>
+    <div class="container">
+        <div class="row hw-100">
+            <div class="col-md-12 m-auto">
+                <div class="card" id="securityCard">
+                    <div class="card-header text-center">
+                        <h1>Registrieren</h1>
+                    </div>
+                    <div class="card-body" id="securityCardBody">
+                        {{ form_start(form) }}
+                        <div class="mb-3">
+                            <div class="input-group">
+                                {{ form_widget(form.firstName) }}
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="userIcon"><i class="ra-user"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="input-group">
+                                {{ form_widget(form.lastName) }}
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="userIcon"><i class="fa-user"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="sr-only">E-Mail Adresse</label>
+                            <div class="input-group">
+                                {{ form_widget(form.email) }}
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="userIcon"><i class="ra-user"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="sr-only">Username</label>
+                            <div class="input-group">
+                                {{ form_widget(form.username) }}
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="userIcon"><i class="ra-user"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="sr-only">Passwort</label>
+                            {{ form_widget(form.plainPassword) }}
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="passwordIcon"><i class="ra-password"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="row securityFormLinks">
+                            <div class="col-xs-12 col-md-12 text-right">
+                                <a href="{{ path('login') }}">Schon registriert?</a>
+                            </div>
+                        </div>
+
+                        <div class="form-group text-right" id="registerButton">
+                            <button class="btn btn-primary" type="submit" name="action">Registrieren</button>
+                        </div>
+                        {{ form_end(form) }}
                     </div>
                 </div>
             </div>
-
-            <div class="mb-3">
-                <div class="input-group">
-                    {{ form_widget(form.lastName) }}
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="userIcon"><i class="fa-user"></i></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-3">
-                <label class="sr-only">E-Mail Adresse</label>
-                <div class="input-group">
-                    {{ form_widget(form.email) }}
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="userIcon"><i class="ra-user"></i></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-3">
-                <label class="sr-only">Username</label>
-                <div class="input-group">
-                    {{ form_widget(form.username) }}
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="userIcon"><i class="ra-user"></i></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="input-group">
-                <label class="sr-only">Passwort</label>
-                {{ form_widget(form.plainPassword) }}
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="passwordIcon"><i class="ra-password"></i></span>
-                </div>
-            </div>
-
-            <div class="row securityFormLinks">
-                <div class="col-xs-12 col-md-12 text-right">
-                    <a href="{{ path('login') }}">Schon registriert?</a>
-                </div>
-            </div>
-
-            <div class="form-group text-right" id="registerButton">
-                <button class="btn btn-primary" type="submit" name="action">Registrieren</button>
-            </div>
-            {{ form_end(form) }}
         </div>
     </div>
 {% endblock %}
