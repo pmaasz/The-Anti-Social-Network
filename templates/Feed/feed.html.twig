@@ -1,0 +1,19 @@
+{% extends '../index.html.twig' %}
+
+{% block feed %}
+     {% for entry in entries %}
+          <div class="media" style="border: black 2px">
+               <a class="media-left" href="#fake">
+                    <img id="userpicpost" alt="" class="media-object img-rounded" src="#">
+               </a>
+               <div class="media-body">
+                    <h4 class="media-heading" id="Username">{{ data.user.username }}</h4>
+                    <p id="Text">{{ data.text }}</p>
+{#                    {% if(data.LinkId is not same as(null)) %}#}
+{#                         <iframe id="yt" width="400" height="200" src="https://www.youtube.com/embed/{{ data.LinkID }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>#}
+{#                    {% endif %}#}
+
+               </div>
+          </div>
+     {% endfor %}
+{% endblock %}

@@ -1,5 +1,35 @@
 {% extends 'base.html.twig' %}
 
+{% block header %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand text-white" href="#">Anti Social Network</a>
+    </nav>
+{% endblock %}
+
 {% block content %}
-    test
+    <div class="bodyBackground bodyHeight">
+        <div class="row">
+            <div class="col-sm-3 bodyHeight bg-red">
+            </div>
+            <div class="col-sm-6 bodyHeight bg-blue">
+                {% block feed %}{% endblock %}
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="media">
+                            <!--Inputs-->
+                            <a class="media-left" href="#fake">
+                                <img id="userpictext" alt="" class="media-object img-rounded" src="">
+                            </a>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="panel-body">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 bodyHeight bg-yellow">
+
+            </div>
+        </div>
+    </div>
 {% endblock %}
