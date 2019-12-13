@@ -1,4 +1,4 @@
-{% extends '../base.html.twig' %}
+{% extends 'Security/security.html.twig' %}
 
 {% block securityform %}
     <div class="card" id="securityCard">
@@ -11,7 +11,7 @@
                 <div class="input-group">
                     {{ form_widget(form.firstName) }}
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="userIcon"><i class="fa-user"></i></span>
+                        <span class="input-group-text" id="userIcon"><i class="ra-user"></i></span>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,17 @@
                 <div class="input-group">
                     {{ form_widget(form.email) }}
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="userIcon"><i class="fa-user"></i></span>
+                        <span class="input-group-text" id="userIcon"><i class="ra-user"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="sr-only">Username</label>
+                <div class="input-group">
+                    {{ form_widget(form.username) }}
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="userIcon"><i class="ra-user"></i></span>
                     </div>
                 </div>
             </div>
@@ -39,13 +49,13 @@
                 <label class="sr-only">Passwort</label>
                 {{ form_widget(form.plainPassword) }}
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="passwordIcon"><i class="fa-password"></i></span>
+                    <span class="input-group-text" id="passwordIcon"><i class="ra-password"></i></span>r
                 </div>
             </div>
 
             <div class="row securityFormLinks">
                 <div class="col-xs-12 col-md-12 text-right">
-                    <a href="{{ path('login') }}">Bereits Registriert?</a>
+                    <a href="{{ path('login') }}">Schon registriert?</a>
                 </div>
             </div>
 

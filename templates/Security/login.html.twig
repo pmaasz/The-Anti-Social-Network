@@ -1,3 +1,45 @@
-{% extends 'Security/index.html.twig' %}
+{% extends 'Security/security.html.twig' %}
 
-{% block securityform %}{% endblock %}
+{% block securityform %}
+    <div class="card" id="securityCard">
+        <div class="card-header text-center">
+            <h1>Login</h1>
+        </div>
+
+        <div class="card-body" id="securityCardBody">
+            <form action="{{ path('login') }}" method="post">
+                <div class="mb-3">
+                    <label class="sr-only">E-Mail Adresse</label>
+                    <div class="input-group">
+                        <input type="email" class="form-control" id="email" name="_email" placeholder="E-Mail Adresse" required/>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="userIcon"><i class="ra-user"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label class="sr-only">Passwort</label>
+                    <input type="password" class="form-control" id="password" name="_plainPassword" placeholder="Passwort" required/>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="passwordIcon"><i class="ra-password"></i></span>
+                    </div>
+                </div>
+
+                <div class="row securityFormLinks">
+                    <div class="col-xs-12 col-sm-6 text-left">
+                        <a href="{{ path('password') }}">Passwort vergessen?</a>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 text-right d-none d-md-flex">
+                        <a href="{{ path('register') }}">Noch nicht registriert?</a>
+                    </div>
+                </div>
+
+                <div class="form-group text-right">
+                    <button class="btn btn-primary" type="submit" name="action">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
