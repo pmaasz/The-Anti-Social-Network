@@ -39,7 +39,7 @@ class Dislike
     private $entry;
 
     /**
-     * Entry constructor.
+     * Dislike constructor.
      *
      * @throws \Exception
      */
