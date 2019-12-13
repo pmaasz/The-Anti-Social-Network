@@ -13,3 +13,11 @@ register:
 password:
     path: /password
     controller: App\Controller\SecurityController::forgotPasswordAction
+
+feed:
+    path: /feed
+    controller: App\Controller\FeedController::indexAction
+
+comment:
+    path: /comment
+    controller: App\Controller\CommentController::createAction

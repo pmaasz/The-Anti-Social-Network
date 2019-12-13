@@ -33,7 +33,6 @@ class SecurityController extends AbstractController
         if($form->isSubmitted() && $form->isValid())
         {
             try{
-                /** @var User $sdkUser */
                 $this->getDoctrine()->getManager()->persist($user);
                 $this->getDoctrine()->getManager()->flush();
             } catch(\Exception $exception){
