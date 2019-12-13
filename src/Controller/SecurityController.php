@@ -11,6 +11,7 @@ use App\Entity\User;
 use App\Forms\UserType;
 use App\Forms\RegistrationType;
 
+
 /**
  * Class SecurityController
  *

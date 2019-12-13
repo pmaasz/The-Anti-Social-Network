@@ -1,6 +1,6 @@
-{% extends '../base.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block securityform %}
+{% block content %}
     <div class="card" id="securityCard">
         <div class="card-header text-center">
             <h1>Login</h1>
@@ -27,14 +27,6 @@
                 </div>
 
                 <div class="row securityFormLinks">
-                    <div class="col-xs-12 col-sm-6 text-left">
-                        <a href="{{ path('password') }}">Passwort vergessen?</a>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-6 text-right d-none d-md-flex">
-                        <a href="{{ path('register') }}">Noch nicht registriert?</a>
-                    </div>
-
                     <div class="col-xs-12 col-sm-6 text-left d-xs-flex d-md-none">
                         <a href="{{ path('register') }}">Noch nicht registriert?</a>
                     </div>

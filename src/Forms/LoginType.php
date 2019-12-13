@@ -17,7 +17,7 @@ use Symfony\Component\Security\Core\Security;
  *
  * @package App\Forms
  */
-class RegistrationType extends AbstractType
+class LoginType extends AbstractType
 {
     /**
      * @var Security
@@ -37,18 +37,6 @@ class RegistrationType extends AbstractType
     {
         $builder
             ->add('username', TextType::class, [
-                'attr' => array('style' => 'height: 25px'),
-                'required' => true
-            ])
-            ->add('email', EmailType::class, [
-                'attr' => array('style' => 'height: 25px'),
-                'required' => true
-            ])
-            ->add('firstName', TextType::class, [
-                'attr' => array('style' => 'height: 25px'),
-                'required' => true
-            ])
-            ->add('lastName', TextType::class, [
                 'attr' => array('style' => 'height: 25px'),
                 'required' => true
             ])
