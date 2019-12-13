@@ -1,10 +1,40 @@
 <?php
 
-
 namespace App\Forms;
 
+use Doctrine\DBAL\Types\TextType;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class EntryType
+/**
+ * Class EntryType
+ *
+ * @author Philip Maass <pmaass@databay.de>
+ */
+class EntryType extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
+    public function buildForm (FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('body', TextType::class, [
 
+            ])
+            ->add('media', FileType::class, [
+
+            ]);
+    }
+
+    /**
+     * @param OptionsResolver $resolver
+     */
+    public function configureOptions (OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([]);
+    }
 }
