@@ -37,6 +37,13 @@ class RegistrationType extends AbstractType
                     'placeholder' => 'Name'
                 ]
             ])
+            ->add('username', TextType::class, [
+                'label' => false,
+                'required' => true,
+                'attr' => [
+                    'placeholder' => 'Username'
+                ]
+            ])
             ->add('email', EmailType::class, [
                 'label' => false,
                 'required' => true,
