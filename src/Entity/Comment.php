@@ -50,6 +50,12 @@ class Comment
     private $entry;
 
     /**
+     * @var Dislike[]
+     * @ORM\OneToMany(targetEntity="Dislike")
+     */
+    private $dislikes;
+
+    /**
      * Comment constructor.
      *
      * @throws \Exception
@@ -137,5 +143,21 @@ class Comment
     public function setEntry(Entry $entry): void
     {
         $this->entry = $entry;
+    }
+
+    /**
+     * @return Dislike[]
+     */
+    public function getDislikes(): array
+    {
+        return $this->dislikes;
+    }
+
+    /**
+     * @param Dislike[] $dislikes
+     */
+    public function setDislikes(array $dislikes): void
+    {
+        $this->dislikes = $dislikes;
     }
 }
