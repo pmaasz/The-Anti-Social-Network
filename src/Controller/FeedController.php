@@ -24,4 +24,9 @@ class FeedController extends AbstractController
             'entries' => $entries
         ]);
     }
+
+    public function createAction()
+    {
+
+    }
 }

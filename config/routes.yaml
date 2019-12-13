@@ -21,3 +21,7 @@ feed:
 comment:
     path: /comment
     controller: App\Controller\CommentController::createAction
+
+entry:
+    path: /entry
+    controller: App\Controller\FeedController::createAction
