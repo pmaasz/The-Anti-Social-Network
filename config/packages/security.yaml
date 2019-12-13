@@ -4,7 +4,7 @@ security:
         users:
             entity:
                 class: 'App\Entity\User'
-                property: 'username'cd /u
+                property: 'username'
 
 
     firewalls:
