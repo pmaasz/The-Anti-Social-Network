@@ -30,19 +30,22 @@ class Comment
 
     /**
      * @var User
-     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="comments")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="uuid")
      */
     private $author;
 
     /**
      * @var Media
      * @ORM\OneToOne(targetEntity="Media")
+     * @ORM\JoinColumn(name="media_id", referencedColumnName="uuid")
      */
     private $media;
 
     /**
      * @var Entry
-     * @ORM\OneToOne(targetEntity="Entry")
+     * @ORM\ManyToOne(targetEntity="Entry")
+     * @ORM\JoinColumn(name="entry_id", referencedColumnName="uuid")
      */
     private $entry;
 

@@ -27,6 +27,7 @@ class Media
     /**
      * @var Entry
      * @ORM\OneToOne(targetEntity="Entry")
+     * @ORM\JoinColumn(name="entry_id", referencedColumnName="uuid")
      */
     private $entry;
 

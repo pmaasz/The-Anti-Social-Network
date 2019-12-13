@@ -30,13 +30,15 @@ class Dislike
 
     /**
      * @var User
-     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="dislikes")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="uuid")
      */
     private $user;
 
     /**
      * @var Entry
-     * @ORM\OneToOne(targetEntity="Entry")
+     * @ORM\ManyToOne(targetEntity="Entry", inversedBy="dislikes")
+     * @ORM\JoinColumn(name="entry_id", referencedColumnName="uuid")
      */
     private $entry;
 

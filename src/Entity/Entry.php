@@ -31,6 +31,7 @@ class Entry
     /**
      * @var User
      * @ORM\OneToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="uuid")
      */
     private $author;
 
@@ -43,6 +44,7 @@ class Entry
     /**
      * @var Media
      * @ORM\OneToOne(targetEntity="Media")
+     * @ORM\JoinColumn(name="media_id", referencedColumnName="uuid")
      */
     private $media;
 

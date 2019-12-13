@@ -9,6 +9,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * Class User
  *
  * @package App\Entity
+ *
+ * @ORM\Entity()
  * @ORM\Table(name="user")
  */
 class User implements UserInterface
@@ -49,6 +51,24 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $plainPassword;
+
+    /**
+     * @var Dislike[]
+     * @ORM\OneToMany(targetEntity="Dislike", mappedBy="user")
+     */
+    private $dislikes;
+
+    /**
+     * @var Comment[]
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="user")
+     */
+    private $comments;
+
+    /**
+     * @var array
+     * @ORM\Column(type="json", nullable=false)
+     */
+    private $roles;
 
     /**
      * User constructor.
@@ -192,5 +212,21 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    /**
+     * @return Dislike[]
+     */
+    public function getDislikes(): array
+    {
+        return $this->dislikes;
+    }
+
+    /**
+     * @param Dislike[] $dislikes
+     */
+    public function setDislikes(array $dislikes): void
+    {
+        $this->dislikes = $dislikes;
     }
 }
