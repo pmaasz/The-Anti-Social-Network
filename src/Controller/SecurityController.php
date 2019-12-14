@@ -117,8 +117,10 @@ class SecurityController extends AbstractController
         if($request->isMethod(Request::METHOD_POST))
         {
             $username = strip_tags($request->get('_username'));
+            $email = strip_tags($request->get('_email'));
             $user = $this->getDoctrine()->getRepository(User::class)->findOneBy([
-                'username' => $username
+                'username' => $username,
+                'email' => $email
             ]);
 
             $this->getDoctrine()->getManager()->remove($user);
