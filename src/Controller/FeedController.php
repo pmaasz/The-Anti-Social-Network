@@ -77,7 +77,7 @@ class FeedController extends AbstractController
             $entityManager->flush();
 
 
-            return $this->redirectToRoute('feed');
+            return $this->redirectToRoute('index');
         }
 
         return $this->render('feed', [

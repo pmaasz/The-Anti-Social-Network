@@ -5,7 +5,7 @@
         <a class="navbar-brand text-white" href="{{ path('index') }}">Anti Social Network</a>
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <div class="ml-auto">
-                <a class="" href="{{ path('feed') }}">Feed</a>
+                <a class="" href="{{ path('index') }}">Feed</a>
             </div>
         {% endif %}
     </nav>
