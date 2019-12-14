@@ -95,7 +95,7 @@ class SecurityController extends AbstractController
 
             $this->addFlash("success", "Sie haben Ihr Profil erfolgreich aktualisiert.");
 
-            return $this->redirectToRoute('login');
+            return $this->redirectToRoute('feed');
         }
 
         return $this->render('User/profile.html.twig', [

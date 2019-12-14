@@ -34,9 +34,6 @@ class UserType extends AbstractType
             ])
             ->add('email', TextType::class, [
 
-            ])
-            ->add('plainPassword', PasswordType::class, [
-
             ]);
     }
 
