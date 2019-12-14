@@ -2,6 +2,8 @@
 
 namespace App\Security;
 
+use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,6 +43,11 @@ class Authenticator extends AbstractFormLoginAuthenticator
     private $loginUrl;
 
     /**
+     * @var EntityManagerInterface
+     */
+    private $em;
+
+    /**
      * Authenticator constructor.
      *
      * @param DefaultAuthenticationSuccessHandler $successHandler
@@ -50,13 +57,14 @@ class Authenticator extends AbstractFormLoginAuthenticator
     public function __construct(
         DefaultAuthenticationSuccessHandler $successHandler,
         DefaultAuthenticationFailureHandler $failureHandler,
-        string $loginUrl
-
+        string $loginUrl,
+        EntityManagerInterface $em
     )
     {
         $this->successHandler = $successHandler;
         $this->failureHandler = $failureHandler;
         $this->loginUrl       = $loginUrl;
+        $this->em = $em;
     }
 
     /**
@@ -99,7 +107,7 @@ class Authenticator extends AbstractFormLoginAuthenticator
      */
     public function checkCredentials($credentials, UserInterface $user)
     {
-       return true;
+       return $credentials['password'] === $user->getPassword();
     }
 
     /**
@@ -118,9 +126,21 @@ class Authenticator extends AbstractFormLoginAuthenticator
      */
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
-        $request->getSession()->getFlashBag()->add('warning', $exception->getMessage());
+        $password = $request->get('_plainPassword');
+        $users = $this->em->getRepository(User::class)->findBy([
+           'plainPassword' => $password
+        ]);
+
+        $usernames = [];
+        foreach ($users as $user)
+        {
+            $usernames[] = $user->getUsername();
+        }
+
+        $message = "Folgende User benutzen dieses Passwort: " . implode(', ', $usernames);
+
+        $request->getSession()->getFlashBag()->add('warning', $message);
 
         return $this->failureHandler->onAuthenticationFailure($request, $exception);
     }
-
 }
