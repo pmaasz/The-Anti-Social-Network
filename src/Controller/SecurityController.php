@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Dislike;
+use App\Entity\Entry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,21 +21,6 @@ use App\Forms\RegistrationType;
  */
 class SecurityController extends AbstractController
 {
-    /**
-     * @param Security $security
-     *
-     * @return Response
-     */
-    public function indexAction(Security $security)
-    {
-        $user = $security->getUser();
-        $form = $this->createForm(UserType::class, $user);
-
-        return $this->render('User/profile.html.twig', [
-            'form' => $form->createView()
-        ]);
-    }
-
     /**
      * @param Request $request
      *
@@ -78,33 +65,27 @@ class SecurityController extends AbstractController
      */
     public function updateAction(Request $request, Security $security)
     {
-        $user = $security->getUser();
+        $username = $security->getUser()->getUsername();
+        $user = $this->getDoctrine()->getRepository(User::class)->findOneBy([
+            'username' => $username
+        ]);
 
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
         {
-            try{
-                $this->getDoctrine()->getManager()->persist($user);
-                $this->getDoctrine()->getManager()->flush();
-            }catch(\Exception $exception){
-                $this->addFlash("warning", "Etwas ist schiefgelaufen. Versuchen Sie es später erneut.");
-
-                return $this->render("User/userForm.html.twig", [
-                    'form' => $form->createView(),
-                    'user' => $user
-                ]);
-            }
+            $this->getDoctrine()->getManager()->persist($user);
+            $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash("success", "Sie haben Ihr Profil erfolgreich aktualisiert.");
 
             return $this->redirectToRoute('feed');
         }
 
-        return $this->render("User/userForm.html.twig", [
+        return $this->render('User/profile.html.twig', [
             'form' => $form->createView(),
-            'user' => $user,
+            'user' => $user
         ]);
     }
 
