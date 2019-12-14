@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Dislike;
 use App\Entity\Entry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -65,6 +66,10 @@ class SecurityController extends AbstractController
      */
     public function updateAction(Request $request, Security $security)
     {
+        if(!$security->getUser())
+        {
+            return $this->render('User/profile.html.twig');
+        }
         $username = $security->getUser()->getUsername();
         $user = $this->getDoctrine()->getRepository(User::class)->findOneBy([
             'username' => $username
@@ -73,6 +78,16 @@ class SecurityController extends AbstractController
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
+        $entries = $this->getDoctrine()->getRepository(Entry::class)->findBy([
+            'author' => $user
+        ]);
+        $comments = $this->getDoctrine()->getRepository(Comment::class)->findBy([
+            'author' => $user
+        ]);
+        $dislikes = $this->getDoctrine()->getRepository(Dislike::class)->findBy([
+           'user' => $user
+        ]);
+
         if($form->isSubmitted() && $form->isValid())
         {
             $this->getDoctrine()->getManager()->persist($user);
@@ -80,12 +95,15 @@ class SecurityController extends AbstractController
 
             $this->addFlash("success", "Sie haben Ihr Profil erfolgreich aktualisiert.");
 
-            return $this->redirectToRoute('login');
+            return $this->redirectToRoute('feed');
         }
 
         return $this->render('User/profile.html.twig', [
             'form' => $form->createView(),
-            'user' => $user
+            'user' => $user,
+            'entries' => $entries,
+            'comments' => $comments,
+            'dislikes' => $dislikes
         ]);
     }
 
