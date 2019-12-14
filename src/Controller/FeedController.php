@@ -51,6 +51,15 @@ class FeedController extends AbstractController
         {
             $entry->setAuthor($this->security->getUser());
 
+            $text = $entry->getBody();
+
+            preg_match_all('/https:\/\/www\.youtube\.com\/watch\?v=([^\s]*)( |$)/', $text, $matches);
+            foreach ($matches[1] as $key => $id) {
+                $entry->setLink($id);
+                $text = str_replace($matches[1][$key], "", $text);
+            }
+
+
             $this->getDoctrine()->getManager()->persist($entry);
             $this->getDoctrine()->getManager()->flush();
 

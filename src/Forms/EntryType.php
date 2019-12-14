@@ -28,9 +28,6 @@ class EntryType extends AbstractType
             ])
             ->add('media', FileType::class, [
                 'required' => false
-            ])
-            ->add('link', TextType::class , [
-                'required' => false
             ]);
     }
 
