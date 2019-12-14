@@ -65,21 +65,22 @@ class FeedController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
             $entityManager = $this->getDoctrine()->getManager();
+            $entry->setAuthor($this->getUser());
             $file = $request->files->get("media");
             var_dump($file); exit;
             //Media Upload
             if(isset($file['media'])){
-                $entry->setMedia($this->imgService->upload($file['cover']));
+                $entry->setMedia($this->imgService->upload($file['media']));
             }
 
             $entityManager->persist($entry);
             $entityManager->flush();
 
 
-            return $this->redirectToRoute("book_list_admin");
+            return $this->redirectToRoute('feed');
         }
 
-        return $this->render('book/admin/form.html.twig', [
+        return $this->render('feed', [
             'form' => $form->createView(),
             'entry' => $entry
         ]);
