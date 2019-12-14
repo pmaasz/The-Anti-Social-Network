@@ -29,7 +29,7 @@ class SecurityController extends AbstractController
         $user = $security->getUser();
         $form = $this->createForm(UserType::class, $user);
 
-        return $this->render('Security/userform.html.twig', [
+        return $this->render('User/profile.html.twig', [
             'form' => $form->createView()
         ]);
     }

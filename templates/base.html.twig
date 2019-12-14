@@ -2,7 +2,7 @@
     <head>
         <meta charset="UTF-8">
 
-        {{ include('./service/head.html.twig') }}
+        {{ include('./Service/head.html.twig') }}
         <title>{% block title %}Anti-Social-Network{% endblock %}</title>
 
         {% block stylesheets %}
@@ -20,6 +20,7 @@
                 </div>
             </nav>
         {% endblock %}
+
         {% block content %}
             <div class="bodyColor bodyHeight">
                 <div class="row">
@@ -54,7 +55,7 @@
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-             {{ include('./service/scripts.html.twig') }}
+             {{ include('./Service/scripts.html.twig') }}
         {% endblock %}
     </body>
 </html>
