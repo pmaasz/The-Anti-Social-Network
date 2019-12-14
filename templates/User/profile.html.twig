@@ -1,0 +1,39 @@
+{% extends "Feed/feed.html.twig" %}
+
+{% block content %}
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <a href="#"><img id="profileImage" class="img-responsive" alt="" src="#"></a>
+
+            <div class="row">
+                {{ form_start(form) }}
+                    <div class="col-xs-6 col-md-6">
+                        {{ form_widget(form.firstName) }}
+                    </div>
+
+                    <div class="col-xs-6 col-md-6">
+                        {{ form_widget(form.lastName) }}
+                    </div>
+                    <div class="col-xs-6 col-md-6">
+                        {{ form_widget(form.email) }}
+                    </div>
+
+                    <div class="col-xs-6 col-md-6">
+                        {{ form_widget(form.username) }}
+                    </div>
+
+                    <div class="col-xs-6 col-md-6">
+                        {{ form_widget(form.plainPassword) }}
+                    </div>
+                {{ form_end(form) }}
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <span>Posts: {{ user.entries|length }}</span>
+                    <span>Dislikes: {{ user.dislikes|length }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

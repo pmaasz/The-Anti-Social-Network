@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -54,16 +55,22 @@ class User implements UserInterface
     private $plainPassword;
 
     /**
-     * @var Dislike[]
+     * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="Dislike", mappedBy="user")
      */
     private $dislikes;
 
     /**
-     * @var Comment[]
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="user")
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="author")
      */
     private $comments;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Entry", mappedBy="author")
+     */
+    private $entries;
 
     /**
      * @var array
@@ -77,6 +84,9 @@ class User implements UserInterface
     public function __construct()
     {
         $this->roles = ['ROLE_USER'];
+        $this->entries = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+        $this->dislikes = new ArrayCollection();
     }
 
     /**
@@ -216,18 +226,50 @@ class User implements UserInterface
     }
 
     /**
-     * @return Dislike[]
+     * @return ArrayCollection
      */
-    public function getDislikes(): array
+    public function getDislikes(): ArrayCollection
     {
         return $this->dislikes;
     }
 
     /**
-     * @param Dislike[] $dislikes
+     * @param ArrayCollection $dislikes
      */
-    public function setDislikes(array $dislikes): void
+    public function setDislikes(ArrayCollection $dislikes): void
     {
         $this->dislikes = $dislikes;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getComments(): ArrayCollection
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param ArrayCollection $comments
+     */
+    public function setComments(ArrayCollection $comments): void
+    {
+        $this->comments = $comments;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getEntries(): ArrayCollection
+    {
+        return $this->entries;
+    }
+
+    /**
+     * @param ArrayCollection $entries
+     */
+    public function setEntries(ArrayCollection $entries): void
+    {
+        $this->entries = $entries;
     }
 }

@@ -16,10 +16,6 @@ password:
 
 user:
     path: /user
-    controller: App\Controller\SecurityController::indexAction
-
-update_user:
-    path: /user/update
     controller: App\Controller\SecurityController::updateAction
 
 feed:

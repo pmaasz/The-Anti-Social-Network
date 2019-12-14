@@ -29,10 +29,13 @@ class UserType extends AbstractType
             ->add('lastName', TextType::class, [
 
             ])
+            ->add('username', TextType::class, [
+
+            ])
             ->add('email', TextType::class, [
 
             ])
-            ->add('password', PasswordType::class, [
+            ->add('plainPassword', PasswordType::class, [
 
             ]);
     }
