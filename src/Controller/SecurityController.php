@@ -116,38 +116,19 @@ class SecurityController extends AbstractController
     {
         if($request->isMethod(Request::METHOD_POST))
         {
-            $emailAddress = strip_tags($request->get('_email'));
-            $password = $this->generatePassword($emailAddress);
-            $user = '';
-            $user->setPassword($password);
+            $username = strip_tags($request->get('_username'));
+            $user = $this->getDoctrine()->getRepository(User::class)->findOneBy([
+                'username' => $username
+            ]);
 
-            try{
-                $this->getDoctrine()->getManager()->persist($user);
-                $this->getDoctrine()->getManager()->flush();
-            }catch(\Exception $exception){
-                $this->addFlash('warning', "Irgendetwas ist schiefgelaufen, bitte versuchen Sie es später erneut.");
+            $this->getDoctrine()->getManager()->remove($user);
+            $this->getDoctrine()->getManager()->flush();
 
-                return $this->render('Security/forgotpassword.html.twig');
-            }
+            $this->addFlash('success', "Bitte registrieren Sie sich erneut.");
 
-            $this->addFlash('success', "Ein neues Passwort wurde generiert. Bitte schauen Sie in Ihrem Mail Postfach.");
-
-            return $this->redirectToRoute('login');
+            return $this->redirectToRoute('register');
         }
 
         return $this->render('Security/forgotpassword.html.twig');
     }
-
-    /**
-     * @param string $username
-     *
-     * @return bool|string
-     */
-    private function generatePassword(string $username)
-    {
-        $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
-
-        return substr(str_shuffle($data), 0, strlen($username));
-    }
-
 }
