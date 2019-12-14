@@ -33,9 +33,8 @@ security:
             http_basic:
                 provider: users
             logout:
-                path:   /logout
+                path:   logout
                 target: /
-
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
