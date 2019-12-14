@@ -17,3 +17,6 @@ composer.lock
 .phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
+composer.lock
+symfony.lock
+
