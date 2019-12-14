@@ -2,7 +2,12 @@
 
 {% block header %}
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <a class="navbar-brand text-white" href="/">Anti Social Network</a>
+        <a class="navbar-brand text-white" href="{{ path('index') }}">Anti Social Network</a>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <div class="ml-auto">
+                <a class="" href="{{ path('feed') }}">Feed</a>
+            </div>
+        {% endif %}
     </nav>
 {% endblock %}
 
