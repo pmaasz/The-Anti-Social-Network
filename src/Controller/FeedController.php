@@ -65,7 +65,7 @@ class FeedController extends AbstractController
 
             $this->addFlash('success', 'Willkommen bei Roundabout. Sie haben sich erfolgreich registriert.');
 
-            return $this->redirectToRoute('feed');
+            return $this->redirectToRoute('index');
         }
 
         return $this->render('Feed/feed.html.twig', [
