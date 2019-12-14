@@ -93,7 +93,7 @@ class FeedController extends AbstractController
             return $this->redirectToRoute('index');
         }
 
-        return $this->render('feed', [
+        return $this->render('Feed/feedInput.html.twig', [
             'form' => $form->createView(),
         ]);
     }
