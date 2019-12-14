@@ -57,7 +57,6 @@ class Authenticator extends AbstractFormLoginAuthenticator
         $this->successHandler = $successHandler;
         $this->failureHandler = $failureHandler;
         $this->loginUrl       = $loginUrl;
-
     }
 
     /**
@@ -85,7 +84,6 @@ class Authenticator extends AbstractFormLoginAuthenticator
             "username" => $request->get('_username'),
             "password" => $request->get('_plainPassword'),
         ];
-
     }
 
     /**
