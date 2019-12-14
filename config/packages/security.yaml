@@ -27,15 +27,14 @@ security:
             form_login:
                 login_path: login
                 check_path: login
-                default_target_path: feed
+                default_target_path: index
                 username_parameter: _username
                 password_parameter: _plainPassword
             http_basic:
                 provider: users
             logout:
-                path:   /logout
+                path:   logout
                 target: /
-
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication

@@ -29,3 +29,7 @@ comment:
 entry:
     path: /entry
     controller: App\Controller\FeedController::createAction
+
+logout:
+    path: /logout
+    methods: GET
