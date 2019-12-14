@@ -36,3 +36,52 @@ body {
     height: calc(100% - 50px);
     width: calc(100% - 50px);
 }
+
+#securityContent{
+    align-items: center;
+}
+
+#securityCard{
+    border-radius: 0;
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    width: 37.5rem;
+    min-height: 30.5rem;
+}
+
+@media (max-width: 640px){
+    #securityCard{
+        width: 100%;
+        margin: 0 auto 4.5rem;
+        min-height: unset;
+    }
+
+    #securityCard div h1 {
+        font-size: 30px;
+    }
+}
+
+#securityCardBody{
+    padding: 2.25rem 5rem;
+}
+
+@media (max-width: 640px){
+    #securityCardBody{
+        padding: 1.5rem 0.75rem;
+    }
+}
+
+#securityFooter{
+    position: fixed;
+    bottom: 0;
+}
+
+.securityFormLinks {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+input{
+    width: 398px;
+    height: 38px;
+}
