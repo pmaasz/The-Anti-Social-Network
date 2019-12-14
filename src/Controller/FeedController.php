@@ -84,12 +84,11 @@ class FeedController extends AbstractController
     private function handleRequest(Request $request, Entry $entry){
         $form = $this->createForm(EntryType::class, $entry);
         $form->handleRequest($request);
-
         if($form->isSubmitted() && $form->isValid()){
             $entityManager = $this->getDoctrine()->getManager();
             $entry->setAuthor($this->getUser());
             $file = $request->files->get("media");
-            var_dump($file); exit;
+            var_dump($file); exit();
             //Media Upload
             if(isset($file['media'])){
                 $entry->setMedia($this->imgService->upload($file['media']));
