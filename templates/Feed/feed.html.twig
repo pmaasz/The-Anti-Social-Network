@@ -6,6 +6,7 @@
           {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                <div class="ml-auto">
                     <a class="" href="{{ path('user') }}">Profil</a>
+                    <a class="" href="{{ path('logout') }}">Logout</a>
                </div>
           {% else %}
                <div class="ml-auto">
