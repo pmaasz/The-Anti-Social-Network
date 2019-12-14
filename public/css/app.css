@@ -49,6 +49,30 @@ body {
     min-height: 30.5rem;
 }
 
+.date {
+    font-size: 10px;
+    float: right;
+}
+
+#username {
+    height: 50px;
+    margin-left: 20px;
+}
+
+#text {
+
+}
+.entryCard {
+    min-height: 100px;
+}
+
+#userpicpost {
+    height: 50px;
+    float: left;
+    width: 50px;
+}
+
+
 @media (max-width: 640px){
     #securityCard{
         width: 100%;
