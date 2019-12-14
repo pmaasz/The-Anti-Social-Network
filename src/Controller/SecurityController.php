@@ -41,7 +41,7 @@ class SecurityController extends AbstractController
 
             $this->addFlash('success', 'Willkommen bei Roundabout. Sie haben sich erfolgreich registriert.');
 
-            return $this->redirectToRoute('feed');
+            return $this->redirectToRoute('index');
         }
 
         return $this->render('Security/register.html.twig', [
@@ -95,7 +95,7 @@ class SecurityController extends AbstractController
 
             $this->addFlash("success", "Sie haben Ihr Profil erfolgreich aktualisiert.");
 
-            return $this->redirectToRoute('feed');
+            return $this->redirectToRoute('index');
         }
 
         return $this->render('User/profile.html.twig', [

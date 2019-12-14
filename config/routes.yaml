@@ -1,6 +1,6 @@
 index:
     path: /
-    controller: App\Controller\OverviewController::indexAction
+    controller: App\Controller\FeedController::indexAction
 
 register:
     path: /register
@@ -17,10 +17,6 @@ password:
 user:
     path: /user
     controller: App\Controller\SecurityController::updateAction
-
-feed:
-    path: /feed
-    controller: App\Controller\FeedController::indexAction
 
 comment:
     path: /comment
