@@ -1,4 +1,4 @@
-{% extends 'index.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block content %}
     <div class="container">
@@ -8,13 +8,14 @@
                     <div class="card-header text-center">
                         <h1>Registrieren</h1>
                     </div>
+
                     <div class="card-body" id="securityCardBody">
                         {{ form_start(form) }}
                         <div class="mb-3">
                             <div class="input-group">
                                 {{ form_widget(form.firstName) }}
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="userIcon"><i class="ra-user"></i></span>
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
                             </div>
                         </div>
@@ -23,7 +24,7 @@
                             <div class="input-group">
                                 {{ form_widget(form.lastName) }}
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="userIcon"><i class="fa-user"></i></span>
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
                             </div>
                         </div>
@@ -33,7 +34,7 @@
                             <div class="input-group">
                                 {{ form_widget(form.email) }}
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="userIcon"><i class="ra-user"></i></span>
+                                    <span class="input-group-text"><i class="fas fa-at"></i></span>
                                 </div>
                             </div>
                         </div>
@@ -43,7 +44,7 @@
                             <div class="input-group">
                                 {{ form_widget(form.username) }}
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="userIcon"><i class="ra-user"></i></span>
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
                             </div>
                         </div>
@@ -52,13 +53,13 @@
                             <label class="sr-only">Passwort</label>
                             {{ form_widget(form.plainPassword) }}
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="passwordIcon"><i class="ra-password"></i></span>
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
                             </div>
                         </div>
 
                         <div class="row securityFormLinks">
                             <div class="col-xs-12 col-md-12 text-right">
-                                <a href="{{ path('login') }}">Schon registriert?</a>
+                                <a href="{{ path('login') }}">Bereits registriert?</a>
                             </div>
                         </div>
 
