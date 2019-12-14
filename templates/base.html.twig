@@ -49,7 +49,19 @@
             </div>
         {% endblock %}
 
-        {% block flashMessages %}{% endblock %}
+        {% block flashMessages %}
+            {% for label, messages in app.flashes(['success', 'warning', 'notice']) %}
+                {% for message in messages %}
+                    <div class="flash flash-{{ label }}">
+                        <div class="text-right">
+                            <span aria-hidden="true"><i class="ra-times"></i></span>
+                        </div>
+
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endblock %}
 
         {% block javascripts %}
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
