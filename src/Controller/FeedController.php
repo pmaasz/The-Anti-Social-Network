@@ -41,36 +41,9 @@ class FeedController extends AbstractController
      */
     public function indexAction(Request $request)
     {
-        $entry = new Entry();
         $entries = $this->getDoctrine()->getRepository(Entry::class)->findAll();
-        $form = $this->createForm(EntryType::class, $entry);
-
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid())
-        {
-            $entry->setAuthor($this->security->getUser());
-
-            $text = $entry->getBody();
-
-            preg_match_all('/https:\/\/www\.youtube\.com\/watch\?v=([^\s]*)( |$)/', $text, $matches);
-            foreach ($matches[1] as $key => $id) {
-                $entry->setLink($id);
-                $text = str_replace($matches[1][$key], "", $text);
-            }
-
-
-            $this->getDoctrine()->getManager()->persist($entry);
-            $this->getDoctrine()->getManager()->flush();
-
-            $this->addFlash('success', 'Willkommen bei Roundabout. Sie haben sich erfolgreich registriert.');
-
-            return $this->redirectToRoute('feed');
-        }
-
         return $this->render('Feed/feed.html.twig', [
             'entries' => $entries,
-            'form' => $form->createView()
         ]);
     }
 
@@ -82,6 +55,7 @@ class FeedController extends AbstractController
     public function createAction(Request $request)
     {
         $entry = new Entry();
+        $entry->setAuthor($this->getUser());
         return $this->handleRequest($request, $entry);
     }
 
@@ -95,7 +69,6 @@ class FeedController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $entityManager = $this->getDoctrine()->getManager();
-            $entry->setAuthor($this->getUser());
             $file = $request->files->get("media");
             var_dump($file); exit();
             //Media Upload
@@ -103,16 +76,24 @@ class FeedController extends AbstractController
                 $entry->setMedia($this->imgService->upload($file['media']));
             }
 
+            //YT-Videos
+            $text = $entry->getBody();
+            preg_match_all('/https:\/\/www\.youtube\.com\/watch\?v=([^\s]*)( |$)/', $text, $matches);
+            foreach ($matches[1] as $key => $id) {
+                $entry->setLink($id);
+                $text = str_replace($matches[1][$key], "", $text);
+            }
+
             $entityManager->persist($entry);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Willkommen bei Roundabout. Sie haben sich erfolgreich registriert.');
 
             return $this->redirectToRoute('index');
         }
 
         return $this->render('feed', [
             'form' => $form->createView(),
-            'entry' => $entry
         ]);
     }
 }
