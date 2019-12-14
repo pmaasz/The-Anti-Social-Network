@@ -5,7 +5,7 @@ namespace App\Service;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ImageUploadService
 {
@@ -16,8 +16,9 @@ class ImageUploadService
 
     /**
      * @param ParameterBagInterface $params
+     * @param TokenStorageInterface $token
      */
-    public function __construct(ParameterBagInterface $params, TokenStorage $token)
+    public function __construct(ParameterBagInterface $params, TokenStorageInterface $token)
     {
         $this->targetDirectory = $this->generateTargetDirectory($params, $token);
     }
@@ -33,7 +34,7 @@ class ImageUploadService
         try {
             $file->move($this->targetDirectory . "/uploads", $fileName);
 
-            return "/uploads/" . $fileName;
+            return $this->targetDirectory . $fileName;
         } catch (FileException $e) {
             error_log($e->getMessage());
 
@@ -43,10 +44,10 @@ class ImageUploadService
 
     /**
      * @param ParameterBagInterface $params
-     *
+     * @param TokenStorageInterface $token
      * @return string
      */
-    private function generateTargetDirectory(ParameterBagInterface $params, TokenStorage $token)
+    private function generateTargetDirectory(ParameterBagInterface $params, TokenStorageInterface $token)
     {
         return $params->get('kernel.project_dir') . "/public/uploads/".$token->getToken()->getUsername()."/";
     }
