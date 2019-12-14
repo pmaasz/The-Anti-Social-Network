@@ -2,33 +2,24 @@
 
 {% block header %}
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <a class="navbar-brand text-white" href="#">Anti Social Network</a>
+        <a class="navbar-brand text-white" href="/">Anti Social Network</a>
     </nav>
 {% endblock %}
 
 {% block content %}
-    <div class="bodyBackground bodyHeight">
-        <div class="row">
-            <div class="col-sm-3 bodyHeight bg-red">
-            </div>
-            <div class="col-sm-6 bodyHeight bg-blue">
-                {% block feed %}{% endblock %}
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <div class="media">
-                            <!--Inputs-->
-                            <a class="media-left" href="#fake">
-                                <img id="userpictext" alt="" class="media-object img-rounded" src="">
-                            </a>
-                        </div>
-                        <hr>
+    <div class="container">
+        <div class="row hw-100">
+            <div class="col-md-12 mt-5">
+                <div class="card landingpageCard " id="securityCard">
+                    <div class="card-header border-0 text-center" style="background-color: transparent">
+                        <img src="{{ asset("../images/thumbs-down.png") }}">
                     </div>
-                    <div class="panel-body">
+                    <div class="card-body text-center" id="securityCardBody">
+                        <h1>We hate everyone!</h1>
+                        <h3>you too?</h3>
+                        <h6>Maybe you want to try <a class="" href="/register">this</a> then</h6>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-3 bodyHeight bg-yellow">
-
             </div>
         </div>
     </div>

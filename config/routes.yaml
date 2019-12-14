@@ -1,3 +1,35 @@
 index:
     path: /
     controller: App\Controller\OverviewController::indexAction
+
+register:
+    path: /register
+    controller: App\Controller\SecurityController::registerAction
+
+login:
+    path: /login
+    controller: App\Controller\SecurityController::loginAction
+
+password:
+    path: /password
+    controller: App\Controller\SecurityController::forgotPasswordAction
+
+user:
+    path: /user
+    controller: App\Controller\SecurityController::indexAction
+
+update_user:
+    path: /user/update
+    controller: App\Controller\SecurityController::updateAction
+
+feed:
+    path: /feed
+    controller: App\Controller\FeedController::indexAction
+
+comment:
+    path: /comment
+    controller: App\Controller\CommentController::createAction
+
+entry:
+    path: /entry
+    controller: App\Controller\FeedController::createAction

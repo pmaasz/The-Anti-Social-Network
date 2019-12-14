@@ -11,6 +11,7 @@ use App\Entity\User;
 use App\Forms\UserType;
 use App\Forms\RegistrationType;
 
+
 /**
  * Class SecurityController
  *
@@ -19,6 +20,21 @@ use App\Forms\RegistrationType;
 class SecurityController extends AbstractController
 {
     /**
+     * @param Security $security
+     *
+     * @return Response
+     */
+    public function indexAction(Security $security)
+    {
+        $user = $security->getUser();
+        $form = $this->createForm(UserType::class, $user);
+
+        return $this->render('Security/userform.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
      * @param Request $request
      *
      * @return RedirectResponse|Response
@@ -26,23 +42,14 @@ class SecurityController extends AbstractController
     public function registerAction(Request $request)
     {
         $user = new User();
-
         $form = $this->createForm(RegistrationType::class, $user);
+
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
         {
-            try{
-                /** @var User $sdkUser */
-                $this->getDoctrine()->getManager()->persist($user);
-                $this->getDoctrine()->getManager()->flush();
-            } catch(\Exception $exception){
-                $this->addFlash('warning', 'Bei der Registrierung ist etwas schiefgelaufen. Versuchen Sie es später erneut.' . $exception->getMessage());
-
-                return $this->render('Security/register.html.twig', [
-                    'form' => $form->createView()
-                ]);
-            }
+            $this->getDoctrine()->getManager()->persist($user);
+            $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', 'Willkommen bei Roundabout. Sie haben sich erfolgreich registriert.');
 
@@ -113,7 +120,7 @@ class SecurityController extends AbstractController
             $emailAddress = strip_tags($request->get('_email'));
             $password = $this->generatePassword($emailAddress);
             $user = '';
-            $user->setPlainPassword($password);
+            $user->setPassword($password);
 
             try{
                 $this->getDoctrine()->getManager()->persist($user);
