@@ -36,9 +36,8 @@ class Comment
     private $author;
 
     /**
-     * @var Media
-     * @ORM\OneToOne(targetEntity="Media")
-     * @ORM\JoinColumn(name="media_id", referencedColumnName="uuid")
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
      */
     private $media;
 
@@ -114,17 +113,17 @@ class Comment
     }
 
     /**
-     * @return Media
+     * @return string
      */
-    public function getMedia(): Media
+    public function getMedia(): ?string
     {
         return $this->media;
     }
 
     /**
-     * @param Media $media
+     * @param string $media
      */
-    public function setMedia(Media $media): void
+    public function setMedia(string $media): void
     {
         $this->media = $media;
     }

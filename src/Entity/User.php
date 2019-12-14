@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -55,19 +54,19 @@ class User implements UserInterface
     private $plainPassword;
 
     /**
-     * @var ArrayCollection
+     * @var Dislike[]
      * @ORM\OneToMany(targetEntity="Dislike", mappedBy="user")
      */
     private $dislikes;
 
     /**
-     * @var ArrayCollection
+     * @var Comment[]
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="author")
      */
     private $comments;
 
     /**
-     * @var ArrayCollection
+     * @var Entry[]
      * @ORM\OneToMany(targetEntity="Entry", mappedBy="author")
      */
     private $entries;
@@ -84,9 +83,6 @@ class User implements UserInterface
     public function __construct()
     {
         $this->roles = ['ROLE_USER'];
-        $this->entries = new ArrayCollection();
-        $this->comments = new ArrayCollection();
-        $this->dislikes = new ArrayCollection();
     }
 
     /**

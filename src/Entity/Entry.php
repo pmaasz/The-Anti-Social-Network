@@ -30,7 +30,7 @@ class Entry
 
     /**
      * @var User
-     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="uuid")
      */
     private $author;
@@ -42,9 +42,8 @@ class Entry
     private $body;
 
     /**
-     * @var Media
-     * @ORM\OneToOne(targetEntity="Media")
-     * @ORM\JoinColumn(name="media_id", referencedColumnName="uuid")
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
      */
     private $media;
 
@@ -158,17 +157,17 @@ class Entry
     }
 
     /**
-     * @return Media
+     * @return string
      */
-    public function getMedia(): ?Media
+    public function getMedia(): ?string
     {
         return $this->media;
     }
 
     /**
-     * @param Media $media
+     * @param string $media
      */
-    public function setMedia(Media $media): void
+    public function setMedia(string $media): void
     {
         $this->media = $media;
     }
