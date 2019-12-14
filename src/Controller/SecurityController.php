@@ -39,7 +39,7 @@ class SecurityController extends AbstractController
             $this->getDoctrine()->getManager()->persist($user);
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('success', 'Willkommen bei Roundabout. Sie haben sich erfolgreich registriert.');
+            $this->addFlash('success', 'Sie haben sich erfolgreich registriert.');
 
             return $this->redirectToRoute('index');
         }
