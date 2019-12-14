@@ -49,6 +49,20 @@ body {
     min-height: 30.5rem;
 }
 
+.entry-textarea {
+    height: 100px;
+    width: 415px;
+}
+
+.feed-form {
+    margin: 0;
+}
+
+.media-input {
+    margin-left: auto;
+    width: 225px;
+}
+
 .date {
     font-size: 10px;
     float: right;

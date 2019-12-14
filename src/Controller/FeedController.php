@@ -42,6 +42,7 @@ class FeedController extends AbstractController
     public function indexAction(Request $request)
     {
         $entries = $this->getDoctrine()->getRepository(Entry::class)->findAll();
+
         return $this->render('Feed/feed.html.twig', [
             'entries' => $entries,
         ]);

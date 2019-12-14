@@ -8,6 +8,7 @@
 /vendor/
 /.idea/
 composer.lock
+src/Migrations/
 ###< symfony/framework-bundle ###
 /.idea
 /composer.lock
