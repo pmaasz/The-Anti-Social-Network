@@ -2,9 +2,10 @@
 
 namespace App\Forms;
 
-use Doctrine\DBAL\Types\TextType;
+use App\Entity\Entry;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -23,10 +24,13 @@ class EntryType extends AbstractType
     {
         $builder
             ->add('body', TextType::class, [
-
+                'required' => false
             ])
             ->add('media', FileType::class, [
-
+                'required' => false
+            ])
+            ->add('link', TextType::class , [
+                'required' => false
             ]);
     }
 
@@ -35,6 +39,6 @@ class EntryType extends AbstractType
      */
     public function configureOptions (OptionsResolver $resolver)
     {
-        $resolver->setDefaults([]);
+        $resolver->setDefaults(["data_class" => Entry::class]);
     }
 }

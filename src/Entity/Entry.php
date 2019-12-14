@@ -55,6 +55,12 @@ class Entry
     private $comments;
 
     /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $link;
+
+    /**
      * @var Dislike[]
      * @ORM\OneToMany(targetEntity="Dislike", mappedBy="entry")
      */
@@ -68,6 +74,7 @@ class Entry
     public function __construct()
     {
         $this->createDate = new \DateTime();
+        $this->body = "";
     }
 
     /**
@@ -105,7 +112,7 @@ class Entry
     /**
      * @return User
      */
-    public function getAuthor(): User
+    public function getAuthor(): ?User
     {
         return $this->author;
     }
@@ -135,9 +142,25 @@ class Entry
     }
 
     /**
+     * @return string
+     */
+    public function getLink(): ?string
+    {
+        return $this->link;
+    }
+
+    /**
+     * @param string $link
+     */
+    public function setLink(string $link): void
+    {
+        $this->link = $link;
+    }
+
+    /**
      * @return Media
      */
-    public function getMedia(): Media
+    public function getMedia(): ?Media
     {
         return $this->media;
     }
