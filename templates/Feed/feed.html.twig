@@ -43,9 +43,9 @@
                                         {% if entry.media %}
                                              <p id="media">{{ entry.media }}</p>
                                         {% endif %}
-                                   {#                    {% if(data.LinkId is not same as(null)) %}#}
-                                   {#                         <iframe id="yt" width="400" height="200" src="https://www.youtube.com/embed/{{ data.LinkID }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>#}
-                                   {#                    {% endif %}#}
+                                        {% if(entry.link is not same as(null)) %}
+                                             <iframe id="yt" width="400" height="200" src="https://www.youtube.com/embed/{{ data.LinkID }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        {% endif %}
                               </div>
                          </div>
                     {% endfor %}
