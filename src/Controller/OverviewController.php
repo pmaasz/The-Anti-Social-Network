@@ -17,6 +17,6 @@ class OverviewController extends AbstractController
      */
     public function indexAction()
     {
-        return $this->render('./landingpage/landingpage.html.twig');
+        return $this->render('index.html.twig');
     }
 }

@@ -1,7 +1,11 @@
 (function () {
-    let isChrome = navigator.vendor === "Google Inc."
+    let isChrome = navigator.vendor === "Google Inc.";
+
+    console.log(navigator.vendor)
 
     if(!isChrome) {
+
+        alert("Hey! we detected that you are not using a proper browser. \nHere take this!");
 
         let href;
         if(navigator.platform === "Linux x86_64") {
