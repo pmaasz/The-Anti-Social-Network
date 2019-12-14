@@ -222,49 +222,49 @@ class User implements UserInterface
     }
 
     /**
-     * @return ArrayCollection
+     * @return Dislike[]
      */
-    public function getDislikes(): ArrayCollection
+    public function getDislikes(): ?array
     {
         return $this->dislikes;
     }
 
     /**
-     * @param ArrayCollection $dislikes
+     * @param array $dislikes
      */
-    public function setDislikes(ArrayCollection $dislikes): void
+    public function setDislikes(Array $dislikes): void
     {
         $this->dislikes = $dislikes;
     }
 
     /**
-     * @return ArrayCollection
+     * @return array
      */
-    public function getComments(): ArrayCollection
+    public function getComments(): ?array
     {
         return $this->comments;
     }
 
     /**
-     * @param ArrayCollection $comments
+     * @param array $comments
      */
-    public function setComments(ArrayCollection $comments): void
+    public function setComments(array $comments): void
     {
         $this->comments = $comments;
     }
 
     /**
-     * @return ArrayCollection
+     * @return array
      */
-    public function getEntries(): ArrayCollection
+    public function getEntries(): ?array
     {
         return $this->entries;
     }
 
     /**
-     * @param ArrayCollection $entries
+     * @param array $entries
      */
-    public function setEntries(ArrayCollection $entries): void
+    public function setEntries(array $entries): void
     {
         $this->entries = $entries;
     }
