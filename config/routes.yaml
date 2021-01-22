@@ -1,6 +1,6 @@
 index:
     path: /
-    controller: App\Controller\FeedController::indexAction
+    controller: App\Controller\FeedController::feedAction
 
 register:
     path: /register
@@ -25,7 +25,3 @@ user:
 comment:
     path: /comment
     controller: App\Controller\CommentController::createAction
-
-entry:
-    path: /entry
-    controller: App\Controller\FeedController::createAction

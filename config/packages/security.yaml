@@ -13,7 +13,7 @@ security:
 
     firewalls:
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            pattern: ^/(_(profiler|wdt)|css|images|js)/login
             security: false
 
         main:
@@ -34,7 +34,7 @@ security:
                 provider: users
             logout:
                 path:   logout
-                target: /
+                target: login
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication

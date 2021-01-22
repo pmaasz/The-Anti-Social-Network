@@ -35,29 +35,12 @@ class FeedController extends AbstractController
     }
 
     /**
-     * @return RedirectResponse|Response
-     *
-     * @throws \Exception
-     */
-    public function indexAction()
-    {
-        $entry = new Entry();
-        $form = $this->createForm(EntryType::class, $entry);
-        $entries = $this->getDoctrine()->getRepository(Entry::class)->findAll();
-
-        return $this->render('Feed/feed.html.twig', [
-            'entries' => $entries,
-            'form' => $form->createView()
-        ]);
-    }
-
-    /**
      * @param Request $request
      * @param Security $security
      *
      * @return RedirectResponse|Response
      */
-    public function createAction(Request $request, Security $security)
+    public function feedAction(Request $request, Security $security)
     {
         $entry = new Entry();
         $entry->setAuthor($security->getUser());
@@ -100,8 +83,11 @@ class FeedController extends AbstractController
             return $this->redirectToRoute('index');
         }
 
-        return $this->render('Feed/inc.feed.html.twig', [
-            'form' => $form->createView(),
+        $entries = $this->getDoctrine()->getRepository(Entry::class)->findAll();
+
+        return $this->render('Feed/feed.html.twig', [
+            'entries' => $entries,
+            'form' => $form->createView()
         ]);
     }
 }
