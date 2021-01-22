@@ -106,3 +106,7 @@ input{
     width: 398px;
     height: 40px;
 }
+
+.form-control{
+    border-radius: 0 !important;
+}
