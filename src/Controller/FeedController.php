@@ -42,8 +42,8 @@ class FeedController extends AbstractController
     public function indexAction()
     {
         $entry = new Entry();
-        $entries = $this->getDoctrine()->getRepository(Entry::class)->findAll();
         $form = $this->createForm(EntryType::class, $entry);
+        $entries = $this->getDoctrine()->getRepository(Entry::class)->findAll();
 
         return $this->render('Feed/feed.html.twig', [
             'entries' => $entries,
@@ -77,8 +77,6 @@ class FeedController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $entityManager = $this->getDoctrine()->getManager();
             $file = $request->files->get("media");
-
-            var_dump($entry);exit;
 
             //Media Upload
             if(isset($file['media'])){
