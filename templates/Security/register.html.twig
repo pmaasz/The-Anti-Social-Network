@@ -22,9 +22,19 @@
                             </div>
                         </div>
 
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <label class="sr-only">Passwort</label>
+                                {{ form_widget(form.plainPassword.first) }}
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="input-group">
-                            <label class="sr-only">Passwort</label>
-                            {{ form_widget(form.plainPassword) }}
+                            <label class="sr-only">Passwort wiederholen</label>
+                            {{ form_row(form.plainPassword.second) }}
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-lock"></i></span>
                             </div>

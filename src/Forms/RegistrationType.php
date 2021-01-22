@@ -5,6 +5,7 @@ namespace App\Forms;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
@@ -46,12 +47,11 @@ class RegistrationType extends AbstractType
                     'placeholder' => 'Username'
                 ]
             ])
-            ->add('plainPassword', PasswordType::class, [
+            ->add('plainPassword', RepeatedType::class, [
                 'label' => false,
                 'required' => true,
-                'attr' => [
-                    'placeholder' => 'Passwort'
-                ],
+                'type' => PasswordType::class,
+                'mapped' => true,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a password',
@@ -64,6 +64,19 @@ class RegistrationType extends AbstractType
                         'message' => 'Please enter a valid password'
                     ]),
                 ],
+                'first_options' => [
+                    'label' => false,
+                    'attr' => [
+                        'placeholder' => 'Passwort'
+                    ]
+                ],
+                'second_options' => [
+                    'label' => false,
+                    'attr' => [
+                        'placeholder' => 'Passwort wiederholen'
+                    ]
+                ],
+
             ]);
     }
 
