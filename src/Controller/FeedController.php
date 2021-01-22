@@ -41,10 +41,13 @@ class FeedController extends AbstractController
      */
     public function indexAction()
     {
+        $entry = new Entry();
         $entries = $this->getDoctrine()->getRepository(Entry::class)->findAll();
+        $form = $this->createForm(EntryType::class, $entry);
 
         return $this->render('Feed/feed.html.twig', [
             'entries' => $entries,
+            'form' => $form->createView()
         ]);
     }
 
@@ -75,6 +78,8 @@ class FeedController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $file = $request->files->get("media");
 
+            var_dump($entry);exit;
+
             //Media Upload
             if(isset($file['media'])){
                 $entry->setMedia($this->imgService->upload($file['media']));
@@ -97,7 +102,7 @@ class FeedController extends AbstractController
             return $this->redirectToRoute('index');
         }
 
-        return $this->render('Feed/feedInput.html.twig', [
+        return $this->render('Feed/inc.feed.html.twig', [
             'form' => $form->createView(),
         ]);
     }

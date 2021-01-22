@@ -7,9 +7,7 @@
           </div>
 
           <div class="col-md-6">
-               {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                    {{ render(controller('App\\Controller\\FeedController::createAction')) }}
-               {% endif %}
+               {% include('Feed/inc.feed.html.twig') %}
 
                <div class="text-center mt-5">
                     {% for entry in entries %}

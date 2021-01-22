@@ -47,10 +47,6 @@ body {
     border: black 2px;
 }
 
-.feed-form {
-    margin: 0;
-}
-
 .date {
     font-size: 10px;
     float: right;
