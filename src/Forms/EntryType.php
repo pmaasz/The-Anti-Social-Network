@@ -28,12 +28,14 @@ class EntryType extends AbstractType
                 'label' => false,
                 'attr' => [
                     'class' => 'form-control',
-                    'rows' => 8
+                    'rows' => 5
                 ],
             ])
             ->add('media', FileType::class, [
                 'required' => false,
-                'attr' => ['class' => "media-input"]
+                'attr' => [
+                    'class' => "media-input"
+                ]
             ]);
     }
 
