@@ -25,7 +25,11 @@ class EntryType extends AbstractType
         $builder
             ->add('body', TextareaType::class, [
                 'required' => false,
-                'attr' => ['class' => 'entry-textarea']
+                'label' => false,
+                'attr' => [
+                    'class' => 'form-control',
+                    'rows' => 8
+                ],
             ])
             ->add('media', FileType::class, [
                 'required' => false,

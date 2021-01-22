@@ -8,36 +8,43 @@
 
           <div class="col-md-6">
                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-               {{ render(controller('App\\Controller\\FeedController::createAction')) }}
+                    {{ render(controller('App\\Controller\\FeedController::createAction')) }}
                {% endif %}
+
                <div class="text-center mt-5">
                     {% for entry in entries %}
                          <!-- todo remove inline style-->
-                         <div class="card mb-3 entryCard" style="border: black 2px">
+                         <div class="card mb-3 entryCard">
                               <div class="entryCard text-left">
                                    <div class="row m-0">
                                         <a class="media-left" href="#">
                                              <img id="userpicpost" alt="" class="media-object img-rounded" src="{{ asset("../images/default.png") }}">
                                         </a>
+
                                         <h4 class="media-heading" id="Username">{{ entry.author.username }}</h4>
-                                        <p class="date ml-auto mr-3">{{ entry.createDate|date }}</p>
+
+                                        <p class="date ml-auto mr-3">
+                                             {{ entry.createDate|date }}
+                                        </p>
                                    </div>
-                                        <p id="Text">{{ entry.body }}</p>
-                                        {% if entry.media %}
-                                             <p id="media">{{ entry.media }}</p>
-                                        {% endif %}
-                                        {% if(entry.link is not same as(null)) %}
-                                             <iframe id="yt" width="400" height="200" src="https://www.youtube.com/embed/{{ data.LinkID }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                        {% endif %}
+
+                                   <p id="Text">
+                                        {{ entry.body }}
+                                   </p>
+
+                                   {% if entry.media %}
+                                        <p id="media">
+                                             {{ entry.media }}
+                                        </p>
+                                   {% endif %}
+
+                                   {% if(entry.link is not same as(null)) %}
+                                        <iframe id="yt" width="400" height="200" src="https://www.youtube.com/embed/{{ data.LinkID }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                   {% endif %}
                               </div>
                          </div>
                     {% endfor %}
-
                </div>
-          </div>
-
-          <div class="col-md-3">
-
           </div>
      </div>
 {% endblock %}

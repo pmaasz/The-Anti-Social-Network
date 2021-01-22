@@ -10,12 +10,6 @@ body {
     background-color: #595c5f !important;
 }
 
-.landingpageCard {
-    background-color: transparent !important;
-    border: none !important;
-    color: white !important;
-}
-
 .bg-blue {
     background-color: blue
 }
@@ -49,18 +43,12 @@ body {
     min-height: 30.5rem;
 }
 
-.entry-textarea {
-    height: 100px;
-    width: 415px;
+.entryCard{
+    border: black 2px;
 }
 
 .feed-form {
     margin: 0;
-}
-
-.media-input {
-    margin-left: auto;
-    width: 225px;
 }
 
 .date {
@@ -72,9 +60,6 @@ body {
     height: 40px;
 }
 
-#text {
-
-}
 .entryCard {
     min-height: 100px;
 }
@@ -84,7 +69,6 @@ body {
     float: left;
     width: 50px;
 }
-
 
 @media (max-width: 640px){
     #securityCard{
@@ -120,5 +104,5 @@ body {
 
 input{
     width: 398px;
-    height: 38px;
+    height: 40px;
 }
