@@ -13,16 +13,6 @@
                         {{ form_start(form) }}
 
                         <div class="mb-3">
-                            <label class="sr-only">E-Mail Adresse</label>
-                            <div class="input-group">
-                                {{ form_widget(form.email) }}
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-at"></i></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
                             <label class="sr-only">Username</label>
                             <div class="input-group">
                                 {{ form_widget(form.username) }}
@@ -41,7 +31,7 @@
                         </div>
 
                         <div class="row securityFormLinks">
-                            <div class="col-xs-12 col-md-12 text-right">
+                            <div class="col-xs-12 col-md-12 text-left">
                                 <a href="{{ path('login') }}">Bereits registriert?</a>
                             </div>
                         </div>

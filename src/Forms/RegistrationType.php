@@ -11,6 +11,9 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 /**
  * Class RegistrationType
@@ -48,7 +51,19 @@ class RegistrationType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'placeholder' => 'Passwort'
-                ]
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Please enter a password',
+                    ]),
+                    new Length([
+                        'max' => 4096,
+                    ]),
+                    new Regex([
+                        'pattern' => '/^\w+/',
+                        'message' => 'Please enter a valid password'
+                    ]),
+                ],
             ]);
     }
 
