@@ -3,6 +3,7 @@
 /.env.local
 /.env.local.php
 /.env.*.local
+/docker-compose.yaml
 /public/bundles/
 /var/
 /vendor/
