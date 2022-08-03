@@ -20,4 +20,6 @@ src/Migrations/
 ###< symfony/phpunit-bridge ###
 composer.lock
 symfony.lock
-
+.DS_Store
+src/.DS_Store
+src/Entity/.DS_Store
