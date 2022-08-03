@@ -23,3 +23,8 @@ symfony.lock
 .DS_Store
 src/.DS_Store
 src/Entity/.DS_Store
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
