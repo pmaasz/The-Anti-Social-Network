@@ -1,59 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block header %}
-     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-          <a class="navbar-brand text-white" href="{{ path('index') }}">Anti Social Network</a>
-          {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-               <div class="ml-auto">
-                    <a class="" href="{{ path('user') }}">Profil</a>
-                    <a class="" href="{{ path('logout') }}">Logout</a>
-               </div>
-          {% else %}
-               <div class="ml-auto">
-                    <a class="" href="{{ path('login') }}">Login</a>
-                    <a class="" href="{{ path('register') }}">Register</a>
-               </div>
-          {% endif %}
-     </nav>
-{% endblock %}
-
 {% block content %}
-
      <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-3"> </div>
 
-          </div>
           <div class="col-md-6">
-               {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-               {{ render(controller('App\\Controller\\FeedController::createAction')) }}
-               {% endif %}
+               {% include('Feed/inc.feed.html.twig') %}
+
                <div class="text-center mt-5">
                     {% for entry in entries %}
                          <!-- todo remove inline style-->
-                         <div class="card mb-3 entryCard" style="border: black 2px">
+                         <div class="card mb-3 entryCard">
                               <div class="entryCard text-left">
                                    <div class="row m-0">
                                         <a class="media-left" href="#">
                                              <img id="userpicpost" alt="" class="media-object img-rounded" src="{{ asset("../images/default.png") }}">
                                         </a>
+
                                         <h4 class="media-heading" id="Username">{{ entry.author.username }}</h4>
-                                        <p class="date ml-auto mr-3">{{ entry.createDate|date }}</p>
+
+                                        <p class="date ml-auto mr-3">
+                                             {{ entry.createDate|date }}
+                                        </p>
                                    </div>
-                                        <p id="Text">{{ entry.body }}</p>
-                                        {% if entry.media %}
-                                             <p id="media">{{ entry.media }}</p>
-                                        {% endif %}
-                                        {% if(entry.link is not same as(null)) %}
-                                             <iframe id="yt" width="400" height="200" src="https://www.youtube.com/embed/{{ data.LinkID }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                        {% endif %}
+
+                                   <p id="Text">
+                                        {{ entry.body }}
+                                   </p>
+
+                                   {% if entry.media %}
+                                        <p id="media">
+                                             {{ entry.media }}
+                                        </p>
+                                   {% endif %}
+
+                                   {% if(entry.link is not same as(null)) %}
+                                        <iframe id="yt" width="400" height="200" src="https://www.youtube.com/embed/{{ data.LinkID }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                   {% endif %}
                               </div>
                          </div>
                     {% endfor %}
-
                </div>
-          </div>
-          <div class="col-md-3">
-
           </div>
      </div>
 {% endblock %}

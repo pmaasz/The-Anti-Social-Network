@@ -13,8 +13,8 @@
                 <div class="card-body" id="securityCardBody">
                     <form action="{{ path('login') }}" method="post">
                         <div class="mb-3">
-                            <label class="sr-only">E-Mail Adresse</label>
                             <div class="input-group">
+                                <label class="sr-only">Username</label>
                                 <input type="text" class="form-control" id="username" name="_username" placeholder="Username" required/>
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -31,19 +31,17 @@
                         </div>
 
                         <div class="row securityFormLinks">
-                            <div class="col-xs-12 col-md-12 text-right">
+                            <div class="col-xs-12 col-md-6 text-left">
                                 <a href="{{ path('register') }}">Noch nicht registriert?</a>
                             </div>
-                        </div>
 
-                        <div class="row securityFormLinks">
-                            <div class="col-xs-12 col-md-12 text-left">
+                            <div class="col-xs-12 col-md-6 text-right">
                                 <a href="{{ path('password') }}">Passwort vergessen</a>
                             </div>
                         </div>
 
-                        <div class="form-group text-right" id="loginButton">
-                            <button class="btn btn-primary" type="submit" name="action">Login</button>
+                        <div class="form-group mt-5" id="loginButton">
+                            <button class="btn btn-block btn-primary" type="submit" name="action">Login</button>
                         </div>
                     </form>
                 </div>

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Class Entry
@@ -117,9 +118,9 @@ class Entry
     }
 
     /**
-     * @param User $author
+     * @param UserInterface $author
      */
-    public function setAuthor(User $author): void
+    public function setAuthor(UserInterface $author): void
     {
         $this->author = $author;
     }

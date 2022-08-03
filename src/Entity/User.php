@@ -33,24 +33,6 @@ class User implements UserInterface
      * @var string
      * @ORM\Column(type="string")
      */
-    private $email;
-
-    /**
-     * @var string
-     * @ORM\Column(type="string")
-     */
-    private $firstName;
-
-    /**
-     * @var string
-     * @ORM\Column(type="string")
-     */
-    private $lastName;
-
-    /**
-     * @var string
-     * @ORM\Column(type="string")
-     */
     private $plainPassword;
 
     /**
@@ -115,54 +97,6 @@ class User implements UserInterface
     public function setUsername(string $username)
     {
         $this->username = $username;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param string $email
-     */
-    public function setEmail(string $email)
-    {
-        $this->email = $email;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFirstName(): ?string
-    {
-        return $this->firstName;
-    }
-
-    /**
-     * @param string $firstName
-     */
-    public function setFirstName(string $firstName): void
-    {
-        $this->firstName = $firstName;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLastName(): ?string
-    {
-        return $this->lastName;
-    }
-
-    /**
-     * @param string $lastName
-     */
-    public function setLastName(string $lastName): void
-    {
-        $this->lastName = $lastName;
     }
 
     /**

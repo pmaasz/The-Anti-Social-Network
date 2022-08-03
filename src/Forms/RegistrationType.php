@@ -5,12 +5,16 @@ namespace App\Forms;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 /**
  * Class RegistrationType
@@ -36,20 +40,6 @@ class RegistrationType extends AbstractType
     public function buildForm (FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName', TextType::class,[
-                'label' => false,
-                'required' => true,
-                'attr' => [
-                    'placeholder' => 'Vorname'
-                ]
-            ])
-            ->add('lastName', TextType::class, [
-                'label' => false,
-                'required' => true,
-                'attr' => [
-                    'placeholder' => 'Name'
-                ]
-            ])
             ->add('username', TextType::class, [
                 'label' => false,
                 'required' => true,
@@ -57,19 +47,36 @@ class RegistrationType extends AbstractType
                     'placeholder' => 'Username'
                 ]
             ])
-            ->add('email', EmailType::class, [
+            ->add('plainPassword', RepeatedType::class, [
                 'label' => false,
                 'required' => true,
-                'attr' => [
-                    'placeholder' => 'E-Mail Adresse'
-                ]
-            ])
-            ->add('plainPassword', PasswordType::class, [
-                'label' => false,
-                'required' => true,
-                'attr' => [
-                    'placeholder' => 'Passwort'
-                ]
+                'type' => PasswordType::class,
+                'mapped' => true,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Please enter a password',
+                    ]),
+                    new Length([
+                        'max' => 4096,
+                    ]),
+                    new Regex([
+                        'pattern' => '/^\w+/',
+                        'message' => 'Please enter a valid password'
+                    ]),
+                ],
+                'first_options' => [
+                    'label' => false,
+                    'attr' => [
+                        'placeholder' => 'Passwort'
+                    ]
+                ],
+                'second_options' => [
+                    'label' => false,
+                    'attr' => [
+                        'placeholder' => 'Passwort wiederholen'
+                    ]
+                ],
+
             ]);
     }
 

@@ -2,10 +2,11 @@
     <head>
         <meta charset="UTF-8">
 
-        {{ include('./Service/head.html.twig') }}
-        <title>{% block title %}Anti-Social-Network{% endblock %}</title>
+        <title>{% block title %}The-Anti-Social-Network{% endblock %}</title>
 
         {% block stylesheets %}
+            <link rel="icon" href="./favicon.ico">
+            <link rel="stylesheet" type="text/css" href="{{ asset("../css/app.css") }}">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         {% endblock %}
@@ -13,19 +14,15 @@
     <body id="body">
         {% block header %}
             <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-                <a class="navbar-brand text-white" href="/">Anti Social Network</a>
-                <div class="ml-auto">
-                    <a class="" href="{{ path('login') }}">Login</a>
-                    <a class="" href="{{ path('register') }}">Register</a>
-                </div>
+                <span class="navbar-brand text-white">The Anti Social Network</span>
             </nav>
         {% endblock %}
 
         {% block content %}
             <div class="bodyColor bodyHeight">
                 <div class="row">
-                    <div class="col-sm-3 bodyHeight bg-red">
-                    </div>
+                    <div class="col-sm-3 bodyHeight bg-red"></div>
+
                     <div class="col-sm-6 bodyHeight bg-blue">
                         {% block feed %}{% endblock %}
                         <div class="panel panel-info">
@@ -38,13 +35,13 @@
                                 </div>
                                 <hr>
                             </div>
+
                             <div class="panel-body">
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-3 bodyHeight bg-yellow">
 
-                    </div>
+                    <div class="col-sm-3 bodyHeight bg-yellow"></div>
                 </div>
             </div>
         {% endblock %}
@@ -67,7 +64,7 @@
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-             {{ include('./Service/scripts.html.twig') }}
+            <script src="{{ asset("../js/app.js") }}"></script>
         {% endblock %}
     </body>
 </html>
