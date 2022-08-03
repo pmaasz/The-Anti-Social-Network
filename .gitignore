@@ -4,6 +4,7 @@
 /.env.local.php
 /.env.*.local
 /docker-compose.yaml
+docker-compose.yaml
 /public/bundles/
 /var/
 /vendor/
