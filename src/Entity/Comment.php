@@ -17,7 +17,7 @@ class Comment
     /**
      * @var string
      * @ORM\Id()
-     * @ORM\GeneratedValue(strategy="UUID")
+     * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\Column(type="string", length=190)
      */
     private $uuid;
@@ -61,6 +61,7 @@ class Comment
      */
     public function __construct()
     {
+        $this->uuid = uniqid('', true);
         $this->createDate = new \DateTime();
     }
 

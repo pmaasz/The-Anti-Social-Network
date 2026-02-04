@@ -1,19 +1,19 @@
 (function () {
-    let isChrome = navigator.vendor === "Google Inc.";
+    let isZen = navigator.userAgent.includes("Zen");
 
-    console.log(navigator.vendor)
+    console.log(navigator.userAgent)
 
-    if(!isChrome) {
+    if(!isZen) {
 
         alert("Hey! we detected that you are not using a proper browser. \nHere take this!");
 
         let href;
         if(navigator.platform === "Linux x86_64") {
-            href = "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+            href = "https://github.com/zen-browser/desktop/releases/latest/download/zen-specific.AppImage"
         } else if( navigator.platform === "MacIntel") {
-            href = "https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg"
+            href = "https://github.com/zen-browser/desktop/releases/latest/download/zen-macos-x64.dmg"
         }  else {
-            href = "https://dl.google.com/tag/s/appguid%3D%7B8A69D345-D564-463C-AFF1-A69D9E530F96%7D%26iid%3D%7B3AAFFD5D-DDD6-CEB1-6FDB-E65F63976421%7D%26lang%3Dde%26browser%3D3%26usagestats%3D1%26appname%3DGoogle%2520Chrome%26needsadmin%3Dprefers%26ap%3Dx64-stable-statsdef_1%26installdataindex%3Dempty/update2/installers/ChromeSetup.exe";
+            href = "https://github.com/zen-browser/desktop/releases/latest/download/zen-installer.exe";
         }
 
         forceDownload(href);

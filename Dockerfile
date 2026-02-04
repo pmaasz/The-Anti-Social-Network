@@ -1,4 +1,4 @@
-FROM php:8.0-fpm
+FROM php:8.2-fpm
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -22,7 +22,9 @@ WORKDIR /var/www/html
 COPY . /var/www/html
 
 # Install PHP dependencies
-RUN composer install --no-interaction --optimize-autoloader
+RUN composer config --no-plugins allow-plugins.symfony/flex true && \
+    composer config audit.block-insecure false && \
+    composer update --no-interaction --optimize-autoloader
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html \

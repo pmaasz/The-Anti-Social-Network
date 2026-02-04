@@ -47,7 +47,7 @@ A list of features to come:
     bad UI. standard bootstrap.
   </li>
   <li>
-    automatically triggers download of chrome.
+    automatically triggers download of Zen Browser.
   </li>
 </ul>
 

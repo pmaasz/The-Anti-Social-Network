@@ -18,7 +18,7 @@ class User implements UserInterface
     /**
      * @var string
      * @ORM\Id()
-     * @ORM\GeneratedValue(strategy="UUID")
+     * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\Column(type="string", length= 191)
      */
     private $uuid;
@@ -64,6 +64,7 @@ class User implements UserInterface
      */
     public function __construct()
     {
+        $this->uuid = uniqid('', true);
         $this->roles = ['ROLE_USER'];
     }
 

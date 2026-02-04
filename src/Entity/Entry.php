@@ -18,7 +18,7 @@ class Entry
     /**
      * @var string
      * @ORM\Id()
-     * @ORM\GeneratedValue(strategy="UUID")
+     * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\Column(type="string", length=190)
      */
     private $uuid;
@@ -73,6 +73,7 @@ class Entry
      */
     public function __construct()
     {
+        $this->uuid = uniqid('', true);
         $this->createDate = new \DateTime();
         $this->body = "";
     }
@@ -120,7 +121,7 @@ class Entry
     /**
      * @param UserInterface $author
      */
-    public function setAuthor(UserInterface $author): void
+    public function setAuthor(?UserInterface $author): void
     {
         $this->author = $author;
     }
