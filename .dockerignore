@@ -1,0 +1,12 @@
+.git
+.gitignore
+.env.local
+var/cache/*
+var/log/*
+var/sessions/*
+vendor/
+node_modules/
+.idea/
+.vscode/
+*.md
+docker-compose.yaml.dist
